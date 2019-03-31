@@ -1,8 +1,17 @@
 #ifndef PID_H
 #define PID_H
+#include <vector>
+
+using namespace std;
 
 class PID {
  public:
+  // Parameters for Twiddle
+  vector<double> p;  // parameter
+  vector<double> dp; // delta parameter
+  double best_err;   // error comparison variable
+  double tolerance;  // tolerance threshold
+  double sum_dp;     // sum of delta parameters
   /**
    * Constructor
    */
@@ -30,8 +39,14 @@ class PID {
    * @output The total PID error
    */
   double TotalError();
-
- private:
+  
+  /**
+   * Calculate the average PID error.
+   * @output The average PID error
+   */
+  double AvgError();
+  
+private:
   /**
    * PID Errors
    */
@@ -45,6 +60,10 @@ class PID {
   double Kp;
   double Ki;
   double Kd;
+  
+  // Error
+  double err_sum;
+  int count; // to calculate average error
 };
 
 #endif  // PID_H
