@@ -45,7 +45,7 @@ void PID::UpdateError(double cte) {
   
   // Count
   count++;
-  
+  /*
   // Twiddle starts--
   sum_dp = 0;
   for (unsigned int index = 0; index < dp.size(); index++)
@@ -81,7 +81,7 @@ void PID::UpdateError(double cte) {
   Kp = p[0];
   Ki = p[1];
   Kd = p[2];
-  // Twiddle ends--    
+  // Twiddle ends--  */  
 }
 
 double PID::TotalError() {
